@@ -1,15 +1,17 @@
 #!/usr/bin/perl -w 
 # Author:		Neil MacGregor
-# Date:			
-# Updated: 		
-# Purpose: 		Nagios module for monitoring when MaxV
-# 			(In response to OTRS TicketID=38707, and others lost in antiquity  )
+# Date:			November, 2011
+# Purpose: 		Nagios module for monitoring when the total number of proxied IP addresses threatens to hit the configured limit for MaxVirtualHosts
+# 			(In response to OTRS TicketID=38707, and others lost in antiquity)
 # Context:		This is run by cron, hourly, see /etc/cron.d/EZproxyAutomation
 #
-# Reference: 		https://helpdesk.library.ualberta.ca/otrs/index.pl?Action=AgentTicketZoom;TicketID=1179;ArticleID=8484#
+# Reference: 		https://helpdesk.library.ualberta.ca/otrs/index.pl?Action=AgentTicketZoom;TicketID=54400  # Finally get this code into revision control & an RPM
 # Reference: 		file://///libroot/ITS_Share/Unix/Change/2011/Q4/CR00000204.html
+# Reference: 		file://///libroot/ITS_Share/Unix/Ezproxy/MVexceeded.html
+# Reference: 		https://ualgitlab.library.ualberta.ca/nmacgreg/ual-nagios-plugins-ezproxymvh/tree/master
 #
-# I've decided that this problem needs more visibility.  It's intermittent in the extreme, but when it bites, it bites HARD.
+# This problem is intermittent in the extreme, but when it bites, it bites HARD, basically performing a denial of service to users who haven't used it recently.
+# 
 # So, this is a new Nagios plugin, to detect & report when EZproxy flirts with the MV limit. 
 # This takes a new approach, monitoring the number of entries in ezproxy.hst
 #
