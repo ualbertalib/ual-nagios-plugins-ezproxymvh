@@ -75,7 +75,7 @@ $threshold = $mv / 1.5;
 
 # Comparison logic
 critical("$count hostnames proxied, out of $mv",$count,$warning,$threshold) if  ($count > $threshold);   # does not return
-warning("$count hostnames proxied, above $warning",$count,$warning,$threshold) if ($count > $threshold);  # does not return
+warning("$count hostnames proxied, above $warning",$count,$warning,$threshold) if ($count > $warning);  # does not return
 ok($count,$warning,$threshold ) ; # does not return
 
 
