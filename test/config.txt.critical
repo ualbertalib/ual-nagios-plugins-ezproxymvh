@@ -1,0 +1,50 @@
+N login.ezproxy.library.ualberta.ca
+
+OPTION PROXYBYHOSTNAME
+INTERFACE 129.128.216.36
+LOGINPORT 80
+SSLCipherSuite HIGH:MEDIUM:!ADH:!SSLv2:!RC4:!aNULL:!eNULL:!LOW
+SSLHonorCipherOrder On
+LoginPortSSL 443
+
+# Require HTTPS for login and admin pages
+Option ForceHTTPSLogin
+Option ForceHTTPSAdmin
+
+Location -File=/usr/share/GeoIP/GeoLiteCity.dat
+
+# LIMITS
+
+# MV: MaxVirtualHosts - default 200
+# determined by number of urls in config
+MV 18000
+
+# MC: MaxConcurrentTransfers - default 200
+MC 600
+
+# MS: MaxSessions - default 500
+MS 5000
+
+# ML: MaxLifeTime - default 120
+ML 90
+
+# Set timeout for downloading binary content
+# default is 60, increased to 600
+RemoteTimeout 600
+BinaryTimeout 600
+
+# Logging options
+LogFormat %h %{ezproxy-session}i %u %t "%r" %s %b
+
+# Audit and intrusion detection
+Option LOGUSER
+Audit Most
+AuditPurge 30
+Option StatusUser
+#Option LogSession
+IntruderIPAttempts -interval=5 -expires=5 10
+IntruderUserAttempts -interval=5 -expires=5 10
+UsageLimit -interval=10 -expires=30 -MB=100 -IgnoreAutoLoginIP Global
+
+# include the include of includes
+IncludeFile stanzas/includes.txt
