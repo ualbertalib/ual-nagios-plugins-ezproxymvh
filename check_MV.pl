@@ -20,7 +20,6 @@
 # to remove hostnames from ezproxy.hst that haven't been accessed in the last 7 days. And, that must be done while EZproxy is down.
 use strict;
 
-my $path="/usr/local/ezproxy";
 
 sub unknown {
 my $string = shift;
@@ -53,6 +52,12 @@ my $threshold=shift;
 print "OK|proxied=$value;$warning;$threshold\n";
 exit 0;
 }
+
+#=============== Main program starts here =====================
+
+my $DEBUG = 0; $DEBUG = $ENV{DEBUG} if defined $ENV{DEBUG}; 
+my $path="/usr/local/ezproxy";
+$path = "./" if $DEBUG;
 
 my $warning; my $threshold=-1;
 
