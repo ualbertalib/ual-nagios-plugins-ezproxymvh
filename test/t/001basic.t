@@ -10,7 +10,7 @@ my $testCount=1;
 # setup
 $ENV{DEBUG} = 1;   # this enables the check_MV.pl script to use data files in the local directory
 `cp -f config.txt.basic config.txt`;
-`cp -f exproxy.hst.basic ezproxy.hst`;
+`cp -f ezproxy.hst.basic ezproxy.hst`;
 
 # The Test
 

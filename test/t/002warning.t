@@ -12,7 +12,7 @@ my $text;
 # setup
 $ENV{DEBUG} = 1;   # this enables the check_MV.pl script to use data files in the local directory
 `/usr/bin/cp -f config.txt.warning config.txt` ;
-#`cp -f exproxy.hst.warning ezproxy.hst`;
+#`cp -f ezproxy.hst.warning ezproxy.hst`;
 
 # The Test
 `../check_MV.pl`; 

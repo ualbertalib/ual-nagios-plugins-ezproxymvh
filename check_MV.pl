@@ -57,9 +57,15 @@ exit 0;
 
 my $DEBUG = 0; $DEBUG = $ENV{DEBUG} if defined $ENV{DEBUG}; 
 my $path="/usr/local/ezproxy";
-$path = "./" if $DEBUG;
+$path = "." if $DEBUG;
 
 my $warning; my $threshold=-1;
+
+# Validate assumptions that ezproxy.hst doesn't exist? 
+unknown ("File $path/ezproxy.hst does not exist") unless (-e "$path/ezproxy.hst"); 
+unknown ("File $path/config.txt does not exist") unless (-e "$path/config.txt"); 
+unknown ("File $path/ezproxy.hst cannot be read") unless (-r "$path/ezproxy.hst"); 
+unknown ("File $path/config.txt cannot be read") unless (-r "$path/config.txt"); 
 
 # How many entries are there in ezproxy.hst? 
 open CMD, "grep ^H $path/ezproxy.hst | wc -l |"  or unknown("Unable to count how many entries in ezproxy.hst: $!");

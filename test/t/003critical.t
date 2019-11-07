@@ -12,12 +12,11 @@ my $text;
 # setup
 $ENV{DEBUG} = 1;   # this enables the check_MV.pl script to use data files in the local directory
 `/usr/bin/cp -f config.txt.critical config.txt` ;
-#`cp -f exproxy.hst.warning ezproxy.hst`;
+#`cp -f ezproxy.hst.warning ezproxy.hst`;
 
 # The Test
 `../check_MV.pl`; 
 $return_value = $? >> 8;
-#ok ($return_value == 1, "script should return a one, when a warning is appropriate: $return_value\n $text");
-ok ($return_value == 2, "script should return a two, when a warning is appropriate: $return_value");
+ok ($return_value == 2, "script should return a two, when the situation is critical: $return_value");
 done_testing $testCount;
 
