@@ -2,7 +2,6 @@
 # Using a different config.txt, mock EZproxy configuration in WARNING condition wrt MVH
 use strict;
 use Test::More;
-#use Storable;
 
 my $DEBUG = 0; $DEBUG = $ENV{"DEBUG"} if defined $ENV{"DEBUG"};
 my $testCount=1;

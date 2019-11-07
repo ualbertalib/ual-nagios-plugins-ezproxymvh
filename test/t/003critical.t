@@ -1,18 +1,15 @@
 #!/usr/bin/perl -w
-# Feed some random, English-like text into the search interface, see if that crashes!
+# Run the plugin, with DEBUG enabled, against some sample config + data files
 use strict;
 use Test::More;
-use Storable;
 
 my $DEBUG = 0; $DEBUG = $ENV{"DEBUG"} if defined $ENV{"DEBUG"};
 my $testCount=1;
 my $return_value=1;
-my $text; 
 
 # setup
 $ENV{DEBUG} = 1;   # this enables the check_MV.pl script to use data files in the local directory
 `/usr/bin/cp -f config.txt.critical config.txt` ;
-#`cp -f ezproxy.hst.warning ezproxy.hst`;
 
 # The Test
 `../check_MV.pl`; 

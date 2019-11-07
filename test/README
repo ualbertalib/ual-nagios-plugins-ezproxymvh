@@ -1,3 +1,13 @@
 You need to install "perl-Test-Harness", available thru yum/dnf, in order to run these tests.   
-That's a very standard package, you shouldn't have to far to find a package
+That's a very standard package, you shouldn't have to go far to find a package.
 If you're using CPAN, I think it's spelled "Test::Harness". 
+
+To run the tests: 
+a) You can use ./allTests.pl to run all the tests, in order
+b) You can run each test individually, but they assume they are run from the test/ directory, 
+   so run them as: 
+[nmacgreg@its004nm2 test]$ t/001basic.t 
+	ok 1 - script should return a zero, where there are no problems
+	1..1
+
+(Don't "cd test/t; ./001basic.t", because they're not designed to run that way)
