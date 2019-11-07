@@ -1,0 +1,2 @@
+User_Alias CHECK_MV=nagios
+CHECK_MV ALL=(root) NOPASSWD: /usr/lib64/nagios/plugins/check_MV.pl
