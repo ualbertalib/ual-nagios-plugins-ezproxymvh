@@ -81,8 +81,8 @@ close CMD;
 unknown("Read a bad value for MV from config.txt") unless ($mv =~ /\d+/ && $mv > 1000);  # 
 
 # Calibration
-$warning = $mv / 2;
-$threshold = $mv / 1.5;
+$warning = 0.75 * $mv;
+$threshold = 0.9 * $mv;
 
 # Comparison logic
 critical("$count hostnames proxied, out of $mv",$count,$warning,$threshold) if  ($count > $threshold);   # does not return
